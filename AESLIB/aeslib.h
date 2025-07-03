@@ -5,14 +5,24 @@
 #include <array>
 #include <vector>
 
-#define err(x) cerr << x << endl; exit(1);
+#define err(x)   cerr << "[*] " << x << endl; exit(1);
+#define debug(x) cerr << "[_] " << x << endl;
 
 using namespace std;
+
 
 typedef array<array<uint8_t, 4>, 4> MATRICE;
 typedef vector<uint8_t> KEY;
 
-string AESencryptString(string text, KEY key);
-string AESdecryptString(string cipher, KEY key);
-bool AESencryptFile(fstream file, KEY key);
-bool AESdecryptFile(fstream file, KEY key);
+class AES128{
+    public:
+        string encryptString(string text, KEY key);
+        string decryptString(string cipher, KEY key);
+        bool encryptFile(fstream file, KEY key);
+        bool decryptFile(fstream file, KEY key);
+    
+    private:
+        void padding(string& text);
+
+};
+
