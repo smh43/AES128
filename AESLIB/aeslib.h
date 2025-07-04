@@ -14,10 +14,16 @@ typedef vector<uint8_t> COL; //juste pour que ca rende mieux et faire la différ
 
 class AES128{ 
     public:
-        string encryptString(string text, KEY key);
-        string decryptString(string cipher, KEY key);
-        bool encryptFile(fstream file, KEY key);
-        bool decryptFile(fstream file, KEY key);
+        AES128(KEY k); //constructeur pour l'objet KEY
+        AES128(string kstr); //constructeur pour transformer une key string en un objet Key
+
+        string encryptString(string text);
+        string decryptString(string cipher);
+        bool encryptFile(fstream file);
+        bool decryptFile(fstream file);
+
+        KEY key;
+        vector<MATRICE> roundKeys;
     
     private:
         void padding(string& text);

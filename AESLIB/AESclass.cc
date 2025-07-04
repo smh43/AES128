@@ -1,16 +1,36 @@
 #include <vector>
 #include <stdint.h>
+#include "aeslib.h"
+#include "debug.h"
 
 using namespace std;
 
-class AES128{
-    AES128() {}
+/*---Les deux constructeurs vont transformer la key en matrice et générer les 10 clés directement-----*/
 
-    private:
-        static const vector<vector<uint8_t>> subBytes;
-        static const vector<vector<uint8_t>> unSubBytes;
+AES128::AES128(KEY k) {
+    if(k.size() != 16){
+        err("Taille incorrecte, la clé doit faire 128 bits (16 octets)");
+    }  
 
-};
+    this->key = k;
+    MATRICE mK = makeMat(key);
+    this->roundKeys = generateKeys(mK);
+} 
+
+AES128::AES128(string kstr) { 
+    KEY ktemp;
+    if(kstr.size() != 16){
+        err("Taille incorrecte, la clé doit faire 128 bits (16 octets)");
+    }  
+    for(uChar i=0; i<16; i++){
+        ktemp.push_back(kstr[i]);
+    }
+
+    this->key = ktemp;
+    MATRICE mK = makeMat(key);
+    this->roundKeys = generateKeys(mK);
+}
+
 
 const vector<vector<uint8_t>> AES128::subBytes = 
 {
