@@ -25,9 +25,9 @@ class AES128{
 
         ///////////////////////////////////////////////////
         MATRICE makeMat(const KEY& key); //pour les clés
-        MATRICE makeMat(const string& text, size_t index); //pour le texte (supérieur à 16 octets)
 
-        vector<MATRICE> textToMat(string& text); //fait boucler la fonction makeMat
+        vector<MATRICE> stringToMat(string& text); //boucle de création de matrice
+        string matToString(vector<MATRICE> am);
 
         vector<uint8_t> matToTab(MATRICE& mat);
         ///////////////////////////////////////////////////
@@ -39,6 +39,11 @@ class AES128{
 
         vector<MATRICE> generateKeys(MATRICE k);
         MATRICE genOneKey(MATRICE& k);
+
+        MATRICE shiftLines(MATRICE m);
+        MATRICE unshiftLines(MATRICE m);
+        MATRICE mixColonnes(MATRICE m);
+        MATRICE unmixColonnes(MATRICE m);
 
 
 };

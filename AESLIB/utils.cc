@@ -53,32 +53,29 @@ MATRICE AES128::makeMat(const KEY& key){
     return mat;
 }
 
-MATRICE AES128::makeMat(const string& text, size_t index){
-    string part = text.substr(index, 16);
+vector<MATRICE> AES128::stringToMat(string& text){
+    vector<MATRICE> allMats;
+    for(size_t i = 0; i < text.size(); i+=16){ //boucle de bloc
+        string block = text.substr(i, 16);
+        MATRICE mat;
+        COL colonne;
 
-    MATRICE mat;
-    COL colonne;
-
-    for(uChar j = 0; j < 4; j++){ 
-        for(uChar i = j; i < 16; i+=4){
-            colonne.push_back(uint8_t(part.at(i)));    
-            //cerr<<part.at(i)<<" ";
+        for(uChar j = 0; j < 4; j++){ //boucle de mat
+            for(uChar z = j; z < 16; z+=4){ //boucle pour implémenter les colonnes
+                colonne.push_back(uint8_t(block.at(z)));    
+            }
+            mat.push_back(colonne);
+            colonne.clear();
         }
-        mat.push_back(colonne);
-        colonne.clear();
-            //cerr<< endl;
+        allMats.push_back( mat );
+        mat.clear();
     }
 
-    return mat;
+    return allMats;
 }
 
-vector<MATRICE> AES128::textToMat(string& text){
-    vector<MATRICE> allMats;
-    for(size_t i = 0; i < text.size(); i+=16){
-
-        allMats.push_back( makeMat(text, i) );
-    }
-    return allMats;
+string AES128::matToString(vector<MATRICE> am){
+    return "";
 }
 
 

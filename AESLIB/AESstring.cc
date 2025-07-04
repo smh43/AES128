@@ -18,10 +18,10 @@ string AES128::encryptString(string text, KEY key){
     vector<MATRICE> allKeys(10);
     allKeys = generateKeys(k);
 
-    vector<MATRICE> allBlocksMess = textToMat(text);
+    vector<MATRICE> textAllBlocks = stringToMat(text);
 
 
-    for(MATRICE& block : allBlocksMess){
+    for(MATRICE& block : textAllBlocks){
         pMat(block);
         for(uChar i = 0; i < 9; i++){ //9 rounds
             continue;
