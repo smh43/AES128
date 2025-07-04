@@ -10,7 +10,7 @@ void AES128::padding(string& text){  //PKCS7 padding
     else{
         char padsize = 16 - (text.size() % 16);
         for(uChar i = 0; i < padsize; i++){
-            text+=padsize;
+            text += padsize;
         }
     }
 }
@@ -40,14 +40,23 @@ MATRICE AES128::makeMat(const KEY& key){
     //  [0x02 0x06 0x0a 0x0e]
     //  [0x03 0x07 0x0b 0x0f]]
 
-
     for(uChar j = 0; j < 4; j++){ 
         for(uChar i = j; i < 16; i+=4){
-            colonne.push_back(key[i]);
+            colonne.push_back(key.at(i));
         }
-        mat[j] = colonne;
+        mat.push_back(colonne);
         colonne.clear();
     }
 
     return mat;
+}
+
+vector<uint8_t> AES128::matToTab(MATRICE& mat){
+    vector<uint8_t> tab;
+    for(uChar i = 0; i < 4; i++){
+        for(vector<uint8_t> col : mat){
+            tab.push_back(col[i]);
+        }
+    }
+    return tab;
 }

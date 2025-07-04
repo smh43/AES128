@@ -8,7 +8,7 @@
 using namespace std;
 
 typedef unsigned char uChar; //pour les boucles des matrices qui vont de 0 à 3
-typedef array<vector<uint8_t>, 4> MATRICE; //vector de 4, plus pratique grace à .push_back, mais nécéssite plus de vérification pour les erreurs
+typedef vector<vector<uint8_t>> MATRICE; //vector de 4, plus pratique grace à .push_back, mais nécéssite plus de vérification pour les erreurs
 typedef vector<uint8_t> KEY;
 
 class AES128{ 
@@ -22,8 +22,18 @@ class AES128{
         void padding(string& text);
         void depadding(string& data);
 
-        MATRICE makeMat(const KEY& key);
+        MATRICE makeMat(const KEY& key); //pour les clés
+        MATRICE makeMat(string message, size_t index); //pour le texte (supérieur à 16 octets), on fait boucler la fonction
+        vector<uint8_t> matToTab(MATRICE& mat);
+
+        static const vector<vector<uint8_t>> subBytes; //16*16
+        static const vector<vector<uint8_t>> unSubBytes; 
+        MATRICE sub(MATRICE& block);
+        MATRICE unsub(MATRICE& cipher);
 
         vector<MATRICE> generateKeys(MATRICE k);
+        MATRICE genOneKey(MATRICE& k);
+
+
 };
 

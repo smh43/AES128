@@ -15,10 +15,7 @@ string AES128::encryptString(string text, KEY key){
 
     MATRICE k = makeMat(key);
 
-    pMat(k);
-
     vector<MATRICE> allKeys(10);
-
     allKeys = generateKeys(k);
 
     return "";

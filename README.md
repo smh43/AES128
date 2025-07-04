@@ -1,6 +1,6 @@
 # AES128
 
-Pour l'instant ce projet ne contient pas de constante RCON
+Pour l'instant ce projet ne contient pas de constante RCON, ni de Rotword au moment de la génération de keys
 
 Avant même de commencer à chiffrer, on doit s'assurer que la taille du message est un multiple de 16
 Si il ne l'est pas, on rajoute des octets jusqu'à ce qu'il le soit
@@ -46,5 +46,5 @@ et la le message est chiffré et presque incassable
 
 
 
-[Vidéo Explicative][https://www.youtube.com/watch?v=gP4PqVGudtg]
+[Vidéo Explicative](https://www.youtube.com/watch?v=gP4PqVGudtg)
  
