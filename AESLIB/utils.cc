@@ -30,7 +30,7 @@ void AES128::depadding(string& data){
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-MATRICE AES128::makeMat(const KEY& key){
+MATRICE AES128::makeMat(const KEY& k){
     MATRICE mat;
     COL colonne;
 
@@ -44,7 +44,7 @@ MATRICE AES128::makeMat(const KEY& key){
 
     for(uChar j = 0; j < 4; j++){ 
         for(uChar i = j; i < 16; i+=4){
-            colonne.push_back(key.at(i));
+            colonne.push_back(k.at(i));
         }
         mat.push_back(colonne);
         colonne.clear();
@@ -74,7 +74,7 @@ vector<MATRICE> AES128::stringToMat(string& text){
     return allMats;
 }
 
-string AES128::matToString(vector<MATRICE> am){
+string AES128::matToString(vector<MATRICE>& am){
     string outText;
 
     for(MATRICE& mat : am){

@@ -30,3 +30,7 @@ MATRICE AES128::unsub(MATRICE& cipher){
     }
     return usubed;
 }
+
+void AES128::xorKey(MATRICE& block, const MATRICE& k){
+    return;
+}

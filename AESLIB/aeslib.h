@@ -12,13 +12,13 @@ typedef vector<vector<uint8_t>> MATRICE; //vector de 4, plus pratique grace à .
 typedef vector<uint8_t> KEY;
 typedef vector<uint8_t> COL; //juste pour que ca rende mieux et faire la différence entre un vector normal et un vector pour les colonnes
 
-class AES128{ 
+class AES128{ //pour Optimiser je passe presque tout en référence
     public:
         AES128(KEY k); //constructeur pour l'objet KEY
         AES128(string kstr); //constructeur pour transformer une key string en un objet Key
 
         string encryptString(string text);
-        string decryptString(string cipher);
+        string decryptString(string ciph);
         bool encryptFile(fstream file);
         bool decryptFile(fstream file);
 
@@ -30,10 +30,10 @@ class AES128{
         void depadding(string& data);
 
         ///////////////////////////////////////////////////
-        MATRICE makeMat(const KEY& key); //pour les clés
+        MATRICE makeMat(const KEY& k); //pour les clés
 
         vector<MATRICE> stringToMat(string& text); //boucle de création de matrice
-        string matToString(vector<MATRICE> am);
+        string matToString(vector<MATRICE>& am);
         ///////////////////////////////////////////////////
 
         static const vector<vector<uint8_t>> subBytes; //16*16
@@ -44,10 +44,12 @@ class AES128{
         vector<MATRICE> generateKeys(MATRICE k);
         MATRICE genOneKey(MATRICE& k);
 
-        MATRICE shiftLines(MATRICE m);
-        MATRICE unshiftLines(MATRICE m);
-        MATRICE mixColonnes(MATRICE m);
-        MATRICE unmixColonnes(MATRICE m);
+        void shiftLines(MATRICE& m);
+        void unshiftLines(MATRICE& m);
+        void mixColonnes(MATRICE& m);
+        void unmixColonnes(MATRICE& m);
+
+        void xorKey(MATRICE& block, const MATRICE& k);
 
 
 };
