@@ -28,9 +28,11 @@ void AES128::depadding(string& data){
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////////
+
 MATRICE AES128::makeMat(const KEY& key){
     MATRICE mat;
-    vector<uint8_t> colonne;
+    COL colonne;
 
     // si la clé est 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 etc...
     // la matrice sera organisé par tableau qui représenteront les colonnes
@@ -51,12 +53,42 @@ MATRICE AES128::makeMat(const KEY& key){
     return mat;
 }
 
+MATRICE AES128::makeMat(const string& text, size_t index){
+    string part = text.substr(index, 16);
+
+    MATRICE mat;
+    COL colonne;
+
+    for(uChar j = 0; j < 4; j++){ 
+        for(uChar i = j; i < 16; i+=4){
+            colonne.push_back(uint8_t(part.at(i)));    
+            //cerr<<part.at(i)<<" ";
+        }
+        mat.push_back(colonne);
+        colonne.clear();
+            //cerr<< endl;
+    }
+
+    return mat;
+}
+
+vector<MATRICE> AES128::textToMat(string& text){
+    vector<MATRICE> allMats;
+    for(size_t i = 0; i < text.size(); i+=16){
+
+        allMats.push_back( makeMat(text, i) );
+    }
+    return allMats;
+}
+
+
 vector<uint8_t> AES128::matToTab(MATRICE& mat){
     vector<uint8_t> tab;
     for(uChar i = 0; i < 4; i++){
-        for(vector<uint8_t> col : mat){
+        for(COL col : mat){
             tab.push_back(col[i]);
         }
     }
     return tab;
 }
+

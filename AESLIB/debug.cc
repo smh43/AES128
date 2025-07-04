@@ -8,6 +8,7 @@ void pMat(MATRICE& m){ //c'est juste pour faire beau
         cerr << (c ? " ":"") << "[";
         for(uChar l = 0; l<4;l++){
             cerr << "0x" << (m[c][l] < 0x10 ? "0" : "") << hex << int(m[c][l]) << (l != 3 ? " " : "");
+            //cerr << char(m[c][l]) << (l != 3 ? " " : ""); pour les matrices du message
         }
         cerr<<"]" << (c !=3 ? "\n" : "");
     }

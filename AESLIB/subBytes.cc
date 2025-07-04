@@ -3,8 +3,8 @@
 
 MATRICE AES128::sub(MATRICE& block){
     MATRICE subed;
-    vector<uint8_t> c;
-    for(vector<uint8_t>& t : block){
+    COL c;
+    for(COL& t : block){
         for(uint8_t& oct : t){
             size_t line = (oct & 0xf0) >> 4;
             size_t col = oct & 0x0f;
@@ -18,8 +18,8 @@ MATRICE AES128::sub(MATRICE& block){
 
 MATRICE AES128::unsub(MATRICE& cipher){
     MATRICE usubed;
-    vector<uint8_t> c;
-    for(vector<uint8_t>& t : cipher){
+    COL c;
+    for(COL& t : cipher){
         for(uint8_t& oct : t){
             size_t line = (oct & 0xf0) >> 4;
             size_t col = oct & 0x0f;

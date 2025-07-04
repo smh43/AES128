@@ -39,7 +39,9 @@ _____________________
 [0 D E F] | [4 3 2 1]
 
 1 sera xor avec F, 2 avec E, 3 avec D etc...
+
 Ces etapes vont se répéter 9 fois, avec la clé qui change à chaque tour
+
 Pour la 10ème étape, c'est pareil mais on ne mixe pas les colonnes
 
 et la le message est chiffré et presque incassable
