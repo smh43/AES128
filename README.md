@@ -16,19 +16,20 @@ Et si le message a déjà une taille multiple de 16, on rajoute 16 octets pour l
 Il se base essentiellement sur le Xor
 Il génère 10 clés de chiffrement chacun dérivé de la précédente
 
-Pour chaque matrice, il va:
+### Pour chaque matrice, il va:
 
-### changer la valeur de chaque octet selon un tableau subByte en fonction de leur valeur:
+changer la valeur de chaque octet selon un tableau subByte en fonction de leur valeur:
 
 *ex : 0x38 -> subByteTab[3][8]*
 
-### Decaler les lignes
+Decaler les lignes
 
-### Mixer les colonnes avec la formule de Rijndael
+Mixer les colonnes avec la formule de Rijndael
 
-### Et Xor chaque octet avec l'octet de la clé à son index:
+Et Xor chaque octet avec l'octet de la clé à son index:
 
-*ex:*
+ex:
+
 [1 2 3 4] | [F E D 0]
 ---------------------
 [5 6 7 8] | [C B A 9]
