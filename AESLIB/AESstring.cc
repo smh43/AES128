@@ -1,4 +1,5 @@
 #include "aeslib.h"
+#include "debug.h"
 #include <string>
 #include <vector>
 
@@ -13,6 +14,8 @@ string AES128::encryptString(string text, KEY key){
     }
 
     MATRICE k = makeMat(key);
+
+    pMat(k);
 
     vector<MATRICE> allKeys(10);
 

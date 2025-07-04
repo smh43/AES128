@@ -10,6 +10,5 @@ int main(){
     
     AES128 AesObj;
     AesObj.encryptString(message, k);
-    cout << "test" << endl;
     return 0;
 }

@@ -5,16 +5,13 @@
 #include <array>
 #include <vector>
 
-#define err(x)   cerr << "[*] " << x << endl; exit(1);
-#define debug(x) cerr << "[_] " << x << endl;
-
 using namespace std;
 
 typedef unsigned char uChar; //pour les boucles des matrices qui vont de 0 à 3
-typedef array<array<uint8_t, 4>, 4> MATRICE;
+typedef array<vector<uint8_t>, 4> MATRICE; //vector de 4, plus pratique grace à .push_back, mais nécéssite plus de vérification pour les erreurs
 typedef vector<uint8_t> KEY;
 
-class AES128{
+class AES128{ 
     public:
         string encryptString(string text, KEY key);
         string decryptString(string cipher, KEY key);

@@ -1,4 +1,5 @@
 #include "aeslib.h"
+#include "debug.h"
 
 void AES128::padding(string& text){  //PKCS7 padding
     if(text.size() % 16 == 0){       //on rajoute un bloc de padding pour se retrouver dans le dépadding
@@ -16,7 +17,6 @@ void AES128::padding(string& text){  //PKCS7 padding
 
 void AES128::depadding(string& data){
     char nbPad = data.back();
-    debug((int)nbPad);
 
     if(nbPad == 0){
         err("Padding incorrect, termine par 0");
@@ -30,16 +30,23 @@ void AES128::depadding(string& data){
 
 MATRICE AES128::makeMat(const KEY& key){
     MATRICE mat;
-    array<uint8_t, 4> colonne;
+    vector<uint8_t> colonne;
 
-    uChar u = 0;
+    // si la clé est 0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 etc...
+    // la matrice sera organisé par tableau qui représenteront les colonnes
 
-    for(uChar j = 0; j < 4; j++){
-        for(uChar i = 0; i < 4; i++){
-            colonne[i] = key[u];
-            u++;
+    // [[0x00 0x04 0x08 0x0c]
+    //  [0x01 0x05 0x09 0x0d]
+    //  [0x02 0x06 0x0a 0x0e]
+    //  [0x03 0x07 0x0b 0x0f]]
+
+
+    for(uChar j = 0; j < 4; j++){ 
+        for(uChar i = j; i < 16; i+=4){
+            colonne.push_back(key[i]);
         }
         mat[j] = colonne;
+        colonne.clear();
     }
 
     return mat;
