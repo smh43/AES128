@@ -1,5 +1,6 @@
 #include "aeslib.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -11,13 +12,11 @@ string AES128::encryptString(string text, KEY key){
         padding(text);
     }
 
-    debug(text.size());
-    depadding(text);
-    
-    debug(text.size());
-    debug(text);
-
     MATRICE k = makeMat(key);
+
+    vector<MATRICE> allKeys(10);
+
+    allKeys = generateKeys(k);
 
     return "";
 }

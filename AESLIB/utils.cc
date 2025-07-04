@@ -16,12 +16,13 @@ void AES128::padding(string& text){  //PKCS7 padding
 
 void AES128::depadding(string& data){
     char nbPad = data.back();
+    debug((int)nbPad);
 
     if(nbPad == 0){
         err("Padding incorrect, termine par 0");
     }
     else{
-        for(uChar i = data.size()-1; i>data.size()-1-nbPad; i--){
+        for(uChar i = 0; i < nbPad; i++){
             data.pop_back();
         }
     }
@@ -31,9 +32,12 @@ MATRICE AES128::makeMat(const KEY& key){
     MATRICE mat;
     array<uint8_t, 4> colonne;
 
+    uChar u = 0;
+
     for(uChar j = 0; j < 4; j++){
         for(uChar i = 0; i < 4; i++){
-            colonne[i] = 0x02;
+            colonne[i] = key[u];
+            u++;
         }
         mat[j] = colonne;
     }

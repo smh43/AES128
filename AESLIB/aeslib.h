@@ -26,5 +26,7 @@ class AES128{
         void depadding(string& data);
 
         MATRICE makeMat(const KEY& key);
+
+        vector<MATRICE> generateKeys(MATRICE k);
 };
 
