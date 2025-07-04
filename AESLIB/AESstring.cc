@@ -9,10 +9,15 @@ string AES128::encryptString(string text, KEY key){
     }
     if(text.size() % 16 != 0){
         padding(text);
-
-        debug(text.size());
-        debug(text);
     }
+
+    debug(text.size());
+    depadding(text);
+    
+    debug(text.size());
+    debug(text);
+
+    MATRICE k = makeMat(key);
 
     return "";
 }
