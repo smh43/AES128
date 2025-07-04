@@ -33,6 +33,7 @@ string AES128::encryptString(string text){ //beaucoup plus court et épuré c'es
             mixColonnes(block);
             xorKey(block, this->roundKeys[i]);
         }
+        
         //dernier round sans mixColonne
         block = sub(block);
         shiftLines(block);
@@ -70,7 +71,7 @@ string AES128::decryptString(string ciph){
     for(MATRICE& bloc : ciphAllBlocks){
         xorKey(bloc, roundKeys[9]);
         unshiftLines(bloc);
-        unsub(bloc);
+        bloc = unsub(bloc);
 
         for(uChar i = 9; i > 0 ; i--){ //unsigned char, donc le i >=0 cause une boucle infini
             uChar index = i-1;
@@ -78,12 +79,9 @@ string AES128::decryptString(string ciph){
             xorKey(bloc, roundKeys[index]);
             unmixColonnes(bloc);
             unshiftLines(bloc);
-            unsub(bloc);  
+            bloc = unsub(bloc);  
         }
 
-        return matToString(ciphAllBlocks);
-       
     }
-
-    return "";
+    return matToString(ciphAllBlocks);
 }

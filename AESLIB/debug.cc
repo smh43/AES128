@@ -2,13 +2,13 @@
 #include "aeslib.h"
 #include "debug.h"
 
-void pMat(MATRICE m){ //c'est juste pour faire beau
+void pMat(MATRICE m, char type = 1){ //c'est juste pour faire beau
     cerr <<"[";
     for(uChar c=0; c<4;c++){
         cerr << (c ? " ":"") << "[";
         for(uChar l = 0; l<4;l++){
-            cerr << "0x" << (m[c][l] < 0x10 ? "0" : "") << hex << int(m[c][l]) << (l != 3 ? " " : "");
-            //cerr << char(m[c][l]) << (l != 3 ? " " : ""); //pour les matrices du message
+            if(type == 1)    cerr << "0x" << (m[c][l] < 0x10 ? "0" : "") << hex << int(m[c][l]) << (l != 3 ? " " : "");
+            else if(type==2) cerr << char(m[c][l]) << (l != 3 ? " " : ""); //pour les matrices du message
         }
         cerr<<"]" << (c !=3 ? "\n" : "");
     }

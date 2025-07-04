@@ -6,5 +6,5 @@
 #define err(x)   cerr << "[*] " << x << endl; exit(1);
 #define debug(x) cerr << "[_] " << x << endl;
 
-void pMat(MATRICE m);
+void pMat(MATRICE m, char type);
 void pstr(string s);

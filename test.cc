@@ -19,10 +19,10 @@ int main(){
     // }
     
     string crypt = obj.encryptString(message);
-    cout << crypt << endl;
+    cerr<<crypt<<endl;
 
     string clear = obj.decryptString(crypt);
-    cout << message << endl; //ca fonctionne!!!
+    cout << clear << endl; 
 
     return 0;
 }

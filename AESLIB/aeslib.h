@@ -41,6 +41,7 @@ class AES128{ //pour Optimiser je passe presque tout en référence
         MATRICE sub(MATRICE& block);
         MATRICE unsub(MATRICE& cipher);
 
+        static const vector<vector<uint8_t>> Rcon; // 8*4
         vector<MATRICE> generateKeys(MATRICE k);
         MATRICE genOneKey(MATRICE& k);
 
@@ -50,7 +51,5 @@ class AES128{ //pour Optimiser je passe presque tout en référence
         void unmixColonnes(MATRICE& m);
 
         void xorKey(MATRICE& block, const MATRICE& k);
-
-
 };
 

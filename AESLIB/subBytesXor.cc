@@ -8,7 +8,7 @@ MATRICE AES128::sub(MATRICE& block){
         for(uint8_t& oct : t){
             size_t line = (oct & 0xf0) >> 4;
             size_t col = oct & 0x0f;
-            c.push_back( AES128::subBytes.at(line).at(col) );
+            c.push_back( subBytes.at(line).at(col) );
         }
         subed.push_back(c);
         c.clear();
@@ -23,7 +23,7 @@ MATRICE AES128::unsub(MATRICE& cipher){
         for(uint8_t& oct : t){
             size_t line = (oct & 0xf0) >> 4;
             size_t col = oct & 0x0f;
-            c.push_back( AES128::unSubBytes[line][col] );
+            c.push_back( unSubBytes.at(line).at(col) );
         }
         usubed.push_back(c);
         c.clear();
