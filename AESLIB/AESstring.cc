@@ -20,14 +20,6 @@ string AES128::encryptString(string text, KEY key){
 
     vector<MATRICE> textAllBlocks = stringToMat(text);
 
-
-    for(MATRICE& block : textAllBlocks){
-        pMat(block);
-        for(uChar i = 0; i < 9; i++){ //9 rounds
-            continue;
-        }
-    }
-
     return "";
 }
 

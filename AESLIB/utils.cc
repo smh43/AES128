@@ -75,17 +75,16 @@ vector<MATRICE> AES128::stringToMat(string& text){
 }
 
 string AES128::matToString(vector<MATRICE> am){
-    return "";
-}
+    string outText;
 
-
-vector<uint8_t> AES128::matToTab(MATRICE& mat){
-    vector<uint8_t> tab;
-    for(uChar i = 0; i < 4; i++){
-        for(COL col : mat){
-            tab.push_back(col[i]);
+    for(MATRICE& mat : am){
+        for(uChar i =0; i<4; i++){
+            for(COL& c : mat){
+                outText += char(c[i]);
+            }
         }
     }
-    return tab;
+
+    return outText;
 }
 

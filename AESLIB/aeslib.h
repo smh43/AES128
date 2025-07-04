@@ -28,8 +28,6 @@ class AES128{
 
         vector<MATRICE> stringToMat(string& text); //boucle de création de matrice
         string matToString(vector<MATRICE> am);
-
-        vector<uint8_t> matToTab(MATRICE& mat);
         ///////////////////////////////////////////////////
 
         static const vector<vector<uint8_t>> subBytes; //16*16
