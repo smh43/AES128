@@ -26,7 +26,24 @@ Decaler les lignes
 
 Mixer les colonnes avec la formule de Rijndael
 
-Et Xor chaque octet avec l'octet de la clé à son index:
+La formule de Rijndael permet simplement de multiplier chaque colonne par une matrice de coefficient :
+
+[2 3 1 1]    [c[0]
+_________     
+[1 2 3 1]     c[1]
+_________  * 
+[1 1 2 3]     c[2]
+_________
+[3 1 1 2]     c[3]]
+
+La multiplication matricielle fait multiplier les colonnes par les lignes
+
+ex : out[0] = c[0]*1 ^ c[1]*3 ^ c[2]*1 ^ c[3]*1, 
+     out[1] = c[0]*1 ^ c[1]*2 ^ etc... 
+
+il y a une autre methode sans faire ces calculs, mais elle n'est pas implémenté ici
+
+Ensuite, on Xor chaque octet avec l'octet de la clé à son index:
 
 ex:
 
@@ -45,6 +62,14 @@ Ces etapes vont se répéter 9 fois, avec la clé qui change à chaque tour
 Pour la 10ème étape, c'est pareil mais on ne mixe pas les colonnes
 
 et la le message est chiffré et presque incassable
+
+
+
+### Dechiffrement
+
+Pour le déchiffrement c'est essentiellement les mêmes étapes inversés
+
+Les matrices de sub et de columns ont juste des équivalents inversés
 
 
 

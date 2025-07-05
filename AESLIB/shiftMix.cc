@@ -36,7 +36,10 @@ void AES128::unshiftLines(MATRICE& m){
 
 
 void AES128::mixColonnes(MATRICE& m){
-    return;
+    for(COL& c : m){
+        COL a = c;
+        
+    }
 }
 void AES128::unmixColonnes(MATRICE& m){
     return;
