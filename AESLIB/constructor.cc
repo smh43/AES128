@@ -11,7 +11,6 @@ AES128::AES128(KEY k) {
     if(k.size() != 16){
         err("Taille incorrecte, la clé doit faire 128 bits (16 octets)");
     }  
-
     this->key = k;
     MATRICE mK = makeMat(key);
     this->roundKeys = generateKeys(mK);
@@ -26,6 +25,7 @@ AES128::AES128(string kstr) {
     for(uChar i=0; i<16; i++){
         ktemp.push_back(kstr[i]);
     }
+
     this->key = ktemp;
     MATRICE mK = makeMat(key);
     this->roundKeys = generateKeys(mK);
