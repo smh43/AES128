@@ -50,6 +50,8 @@ class AES128{ //pour Optimiser je passe presque tout en référence
         void mixColonnes(MATRICE& m);
         void unmixColonnes(MATRICE& m);
 
+        uint8_t XTIME(uint8_t a);
+
         void xorKey(MATRICE& block, const MATRICE& k);
 };
 

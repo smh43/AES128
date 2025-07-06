@@ -21,9 +21,9 @@ using namespace std;
 */
 
 string AES128::encryptString(string text){ //beaucoup plus court et épuré c'est carré
-    if(text.size() % 16 != 0){
-        padding(text);
-    }
+
+    padding(text);
+    
     vector<MATRICE> textAllBlocks = stringToMat(text);
 
     for(MATRICE& block : textAllBlocks){
@@ -83,5 +83,9 @@ string AES128::decryptString(string ciph){
         }
 
     }
-    return matToString(ciphAllBlocks);
+    string decoded = matToString(ciphAllBlocks);
+
+    depadding(decoded);
+
+    return decoded;
 }

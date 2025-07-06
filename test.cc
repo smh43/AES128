@@ -2,13 +2,12 @@
 #include <string>
 #include "AESLIB\aeslib.h"
 #include "AESLIB\debug.h"
-
 using namespace std;
 
 int main(){
-    string message = "PS C:/Users/Elève/Documents/code/CPP/AES128>";
+    string message = "Tu crois vraiment ce que tu vois ?";
 
-    //message = "0123456789ABCDEF"; //decrypte MULTIPLE &-
+    message = "0123456789ABCDEF"; //decrypte MULTIPLE 16
 
     string cle = "abcdefghijklmnop";
     
@@ -19,10 +18,10 @@ int main(){
     // }
     
     string crypt = obj.encryptString(message);
-    cerr<<crypt<<endl;
+    cout << crypt << " | " << crypt.size() << endl;
 
     string clear = obj.decryptString(crypt);
-    cout << clear << endl; 
+    cout << clear << " | " << clear.size() << endl; 
 
     return 0;
 }
