@@ -43,8 +43,7 @@ string AES128::encryptString(string text){ //beaucoup plus court et épuré c'es
     return matToString(textAllBlocks);;
 }
 
-/*
-    decrypt:
+/*  decrypt:
 
     1.transformer string en vecteur de matrice
     2.xor avec la derniere clé
@@ -52,7 +51,7 @@ string AES128::encryptString(string text){ //beaucoup plus court et épuré c'es
     4.unsub les octets
     5.répéter 9 tours:
         xor avec la clé (à l'envers)
-        Changer les colonnes avec rainjled 
+        Changer les colonnes avec rijndaed 
         décaler les lignes
         unsub les octets
 

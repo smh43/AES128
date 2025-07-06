@@ -36,11 +36,11 @@ void AES128::unshiftLines(MATRICE& m){
 
 uint8_t AES128::XTIME(uint8_t a){ //si a a le dernier bit, on le multiplie par 2 et on le ramene à un octet, sinon on le multiplie par 2
 
-    if(a & 0x80){
-        return ((a << 1) ^ 0x1B) & 0xFF;
+    if(a & 0x80){ //si le dernier bit est 1
+        return ((a << 1) ^ 0x1B) & 0xFF; //on reboucle sur le champ (x**8 + 0x1B = 0x11B, le polynome qui sert de modulo), donc pour retirer x8 on xor puis and
     }
     else{
-        return a << 1;
+        return a << 1;  //multiplication par 2 indirect
     }
 }
 void AES128::mixColonnes(MATRICE& m){

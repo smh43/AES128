@@ -6,18 +6,15 @@ using namespace std;
 
 int main(){
     string message = "Tu crois vraiment ce que tu vois?";
-
     string cle = "abcdefghijklmnop";
     
     AES128 obj(cle);
-
-    // for(MATRICE& m : obj.roundKeys){
-    //     pMat(m);
-    // }
     
-    string crypt = obj.encryptString(message);
+    string crypt = obj.encryptString(message); //ne pas afficher ca avec cout et cerr car les octets provoquent des comportements indéfinis
+    //pstr(crypt);
 
     string clear = obj.decryptString(crypt);
+    cout << clear << endl;
 
-    return 1;
+    return 0;
 }

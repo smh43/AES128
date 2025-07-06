@@ -32,7 +32,6 @@ MATRICE AES128::unsub(MATRICE& cipher){
 }
 
 void AES128::xorKey(MATRICE& block, const MATRICE& k){
-    
     for(uChar i = 0; i<4; i++){
         for (uChar d = 0; d<4; d++){
             block[i][d] ^= k[i][d];

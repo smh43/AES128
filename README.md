@@ -41,18 +41,23 @@ La multiplication matricielle fait multiplier les colonnes par les lignes
 ex : out[0] = c[0]*1 ^ c[1]*3 ^ c[2]*1 ^ c[3]*1, 
      out[1] = c[0]*1 ^ c[1]*2 ^ etc... 
 
-Mais la particularité est que le calcul se fait dans un champ fini, de [0; 2**8] (un octet)
+Mais la particularité est que le calcul se fait dans un champ fini, de [0; 0xff] (un octet)
 
 Le mixColumn se base sur un polynome de degré 8:
 x\**8 + x\**4 + x**3 + x + 1
 
-Dans le champ [0; 2**8], les additions sont en fait des xor pour ne pas dépasser
+Dans le champ [0; 0xff].
+Dans un champ de puissance de 2, les additions sont en fait des xor (a + b % 2) = a ^ b pour a et b dans [0; 1]
 
 ce qui donne en binaire 0000 0001 0001 1011 = 0x11B
 
 ce qui revient à x**8 + 0x1B
 
 donc si la valeur de la multiplication dépasse 8 bits (donc x**8 > 0), on le ramène dans le champ par un xor 0x1B
+
+Une multiplication est ici représenté par un décalage de 1 bit vers la gauche (a << 1)
+
+la fonction xtime() permet de multiplier dans ce champ correctement
 
 C'est compliqué et avancé donc voilà Wikipédia pour mieux expliquer : **https://en.wikipedia.org/wiki/Rijndael_MixColumns**
 
