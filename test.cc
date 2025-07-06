@@ -7,7 +7,7 @@ using namespace std;
 int main(){
     string message = "Tu crois vraiment ce que tu vois ?";
 
-    message = "0123456789ABCDEF"; //decrypte MULTIPLE 16
+    //message = "0123456789ABCDEF"; //decrypte MULTIPLE 16
 
     string cle = "abcdefghijklmnop";
     

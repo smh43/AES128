@@ -73,7 +73,7 @@ string AES128::decryptString(string ciph){
         unshiftLines(bloc);
         bloc = unsub(bloc);
 
-        for(uChar i = 9; i > 0 ; i--){ //unsigned char, donc le i >=0 cause une boucle infini
+        for(uChar i = 9; i > 0; i--){ //unsigned char, donc le i >=0 cause une boucle infini
             uChar index = i-1;
 
             xorKey(bloc, roundKeys[index]);

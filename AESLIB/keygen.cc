@@ -19,7 +19,6 @@ vector<MATRICE> AES128::generateKeys(MATRICE k){ //génère par colonne
 MATRICE AES128::genOneKey(MATRICE& k){ //a revoir avec rcon
                                        //subbyte appliqué uniquement sur la derniere colonne de la clé précédente
                                        //décalage de la derniere colonne de 1
-
     MATRICE newKey;
     COL newCol;
     MATRICE Subed = sub(k);

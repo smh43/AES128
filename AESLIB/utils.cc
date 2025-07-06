@@ -4,7 +4,7 @@
 void AES128::padding(string& text){  //PKCS7 padding
     if(text.size() % 16 == 0){       //on rajoute un bloc de padding pour se retrouver dans le dépadding
         for(uChar i = 0; i<16; i++){
-            text += char(0x16);
+            text += char(0x10);
         }
     }
     else{
