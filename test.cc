@@ -5,9 +5,7 @@
 using namespace std;
 
 int main(){
-    string message = "Tu crois vraiment ce que tu vois ?";
-
-    //message = "0123456789ABCDEF"; //decrypte MULTIPLE 16
+    string message = "Tu crois vraiment ce que tu vois?";
 
     string cle = "abcdefghijklmnop";
     
@@ -18,10 +16,8 @@ int main(){
     // }
     
     string crypt = obj.encryptString(message);
-    cout << crypt << " | " << crypt.size() << endl;
 
     string clear = obj.decryptString(crypt);
-    cout << clear << " | " << clear.size() << endl; 
 
-    return 0;
+    return 1;
 }
