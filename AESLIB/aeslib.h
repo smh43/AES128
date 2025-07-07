@@ -41,9 +41,9 @@ class AES128{ //pour Optimiser je passe presque tout en référence
         MATRICE sub(MATRICE& block);
         MATRICE unsub(MATRICE& cipher);
 
-        static const vector<vector<uint8_t>> Rcon; // 8*4
+        static const vector<uint8_t> Rcon; 
         vector<MATRICE> generateKeys(MATRICE k);
-        MATRICE genOneKey(MATRICE& k);
+        MATRICE genOneKey(MATRICE k, uint8_t rconIndex);
 
         void shiftLines(MATRICE& m);
         void unshiftLines(MATRICE& m);

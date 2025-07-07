@@ -14,7 +14,7 @@ int main(){
     //pstr(crypt);
 
     string clear = obj.decryptString(crypt);
-    cout << clear << endl;
+    cout << clear << " | " << clear.size() << "/" << message.size() << endl;
 
     return 0;
 }

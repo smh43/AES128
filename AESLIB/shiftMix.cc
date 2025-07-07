@@ -43,7 +43,8 @@ uint8_t AES128::XTIME(uint8_t a){ //si a a le dernier bit, on le multiplie par 2
         return a << 1;  //multiplication par 2 indirect
     }
 }
-void AES128::mixColonnes(MATRICE& m){
+
+void AES128::mixColonnes(MATRICE& m){ 
     for(COL& c : m){
         uint8_t t = c[0] ^ c[1] ^ c[2] ^ c[3];
         uint8_t u = c[0]; //pour boucler correctement

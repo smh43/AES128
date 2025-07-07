@@ -3,7 +3,11 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "system_error": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp"
     },
     "files.exclude": {
         "**/.git": false
