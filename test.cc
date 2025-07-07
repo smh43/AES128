@@ -5,7 +5,8 @@
 using namespace std;
 
 int main(){
-    string message = "Tu crois vraiment ce que tu vois?";
+    
+    string message = "Test AES ? 128, tout intégré";
     string cle = "abcdefghijklmnop";
     
     AES128 obj(cle);
@@ -14,7 +15,7 @@ int main(){
     //pstr(crypt);
 
     string clear = obj.decryptString(crypt);
-    cout << clear << " | " << clear.size() << "/" << message.size() << endl;
+    cout << clear << " | " << clear.size() << endl;
 
     return 0;
 }
