@@ -18,7 +18,7 @@ vector<MATRICE> AES128::generateKeys(MATRICE k){ //génère par colonne
     return allKeys;
 }
 
-MATRICE AES128::genOneKey(MATRICE k, uint8_t rconIndex){ 
+MATRICE AES128::genOneKey(MATRICE k, uint8_t rconIndex){ //génération de clés peut etre différente de certains algorithmes, inspiré de : https://www.youtube.com/watch?v=gP4PqVGudtg&pp=0gcJCfwAo7VqN5tD
                                        //subbyte appliqué uniquement sur la derniere colonne de la clé précédente
                                        //décalage de la derniere colonne de 1
     MATRICE newKey;

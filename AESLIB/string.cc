@@ -27,6 +27,10 @@ string AES128::encryptString(string text){ //beaucoup plus court et épuré c'es
     vector<MATRICE> textAllBlocks = stringToMat(text);
 
     for(MATRICE& block : textAllBlocks){
+
+        MATRICE startKey = makeMat(key);
+        xorKey(block, startKey); //xor de début avec la clé original
+
         for(uChar i = 0; i<9; i++){
             block = sub(block); //ne pas changer le type de retour, utilisé pour keyGen
             shiftLines(block);
@@ -80,6 +84,9 @@ string AES128::decryptString(string ciph){
             unshiftLines(bloc);
             bloc = unsub(bloc);  
         }
+
+        MATRICE startKey = makeMat(key);
+        xorKey(bloc, startKey); //xor de fin avec la clé original
 
     }
     string decoded = matToString(ciphAllBlocks);
