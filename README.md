@@ -1,6 +1,8 @@
 # AES128
 
-Pour l'instant ce projet ne contient pas de Rotword au moment de la génération de keys
+Test de AES128 fait main, différe surement des algorithmes officiels surtout dans la génération des clés je crois
+
+
 
 Avant même de commencer à chiffrer, on doit s'assurer que la taille du message est un multiple de 16
 Si il ne l'est pas, on rajoute des octets jusqu'à ce qu'il le soit
