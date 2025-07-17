@@ -33,7 +33,7 @@ La formule de Rijndael permet simplement de multiplier chaque colonne par une ma
 _________     
 [1 2 3 1]     c[1]
 _________  
-[1 1 2 3] \*  c[2]
+[1 1 2 3]     c[2]
 _________
 [3 1 1 2]     c[3]\]
 
