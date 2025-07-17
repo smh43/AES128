@@ -1,7 +1,6 @@
 # AES128
 
-Test de AES128 fait main, différe surement des algorithmes officiels surtout dans la génération des clés je crois
-
+Test de AES128 mode ECB fait main, différe surement des algorithmes officiels surtout dans la génération des clés je crois
 
 
 Avant même de commencer à chiffrer, on doit s'assurer que la taille du message est un multiple de 16
@@ -24,19 +23,19 @@ changer la valeur de chaque octet selon un tableau subByte en fonction de leur v
 
 *ex : 0x38 -> subByteTab[3][8]*
 
-Decaler les lignes
+Décaler les lignes
 
 Mixer les colonnes avec la formule de Rijndael
 
 La formule de Rijndael permet simplement de multiplier chaque colonne par une matrice de coefficient :
 
-[2 3 1 1]    [c[0]
+[2 3 1 1]    \[c[0]
 _________     
 [1 2 3 1]     c[1]
-_________  * 
-[1 1 2 3]     c[2]
+_________  
+[1 1 2 3] \*  c[2]
 _________
-[3 1 1 2]     c[3]]
+[3 1 1 2]     c[3]\]
 
 La multiplication matricielle fait multiplier les colonnes par les lignes
 
